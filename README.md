@@ -51,7 +51,3 @@ The following settings must be passed as secrets in your GitHub repository. Sens
 ## Credits
 
 * [Henry Newman](https://github.com/henrynewman)
-
----
-
-This `README.md` provides clear steps on how to use the action, a sample workflow configuration, the required secrets, and how to set up Azure for deployment. Feel free to customize it further based on any additional features or specifics you have.
