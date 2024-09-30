@@ -1,0 +1,9 @@
+name: "Deploy Docusaurus to Azure Container Apps"
+description: "Builds and syncs Docusaurus site to Azure Container Apps"
+author: docuactions
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: refresh-cw
+  color: green
