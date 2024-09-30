@@ -1,20 +1,24 @@
 # Use Node.js base image
 FROM node:16
 
+# Label for versioning
+LABEL version="1.0.0"
+
 # Install Azure CLI
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
-# Set up work directory
+# Install dependencies
+RUN apt-get update && \
+    apt-get install -y \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set up working directory
 WORKDIR /usr/src/app
 
-# Install project dependencies
-RUN npm install
+# Add entrypoint script
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-# Copy the rest of the Docusaurus project files
-COPY ../../ .
-
-# Build the Docusaurus site
-RUN npm run build
-
-# Set default entrypoint
-ENTRYPOINT ["node", "/usr/src/app/entrypoint.js"]
+# Set default entrypoint to the shell script
+ENTRYPOINT ["/entrypoint.sh"]
