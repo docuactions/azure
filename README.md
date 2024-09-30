@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - uses: docuactions/deploy-docusaurus-azure@v1
+      - uses: docuactions/azure@main
         with:
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           azure_acr_name: ${{ secrets.ACR_NAME }}
