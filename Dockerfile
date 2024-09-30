@@ -7,14 +7,11 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 # Set up work directory
 WORKDIR /usr/src/app
 
-# Copy only package.json and package-lock.json first to leverage Docker cache
-COPY package*.json ./
-
 # Install project dependencies
 RUN npm install
 
-# Copy the rest of the action code (the Docusaurus project)
-COPY . .
+# Copy the rest of the Docusaurus project files
+COPY ../../ .
 
 # Build the Docusaurus site
 RUN npm run build
